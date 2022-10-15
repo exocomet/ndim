@@ -179,6 +179,10 @@ export class Vector {
     if(!this.dim() == v.dim()) throw Error;
   };
 
+  get(i) {
+    return this.arr[i];
+  }
+
   add(v) {
     this._assertDimensions(v);
     let u = this.arr;
