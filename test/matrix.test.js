@@ -106,3 +106,16 @@ test('Vector cross/vector product', () => {
   expect(u.cross(v).arr).toEqual([-14, -6, 10]);
 });
 
+test('Vector length and normalization', () => {
+  // let u = new Vector([0, 1]);
+  let u2 = new Vector([1, 1]);
+  let u3 = new Vector([1, 1, 1]);
+  let v = new Vector([3, 4]);
+  expect(u2.length()).toEqual(Math.sqrt(2));
+  expect(u3.length()).toEqual(Math.sqrt(3));
+  expect(v.length()).toEqual(5);
+
+  let u = new Vector([1, 1, 1]);
+  expect(u.norm().length()).toEqual(1);
+});
+

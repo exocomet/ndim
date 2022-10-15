@@ -236,4 +236,15 @@ export class Vector {
     w[2] = u[0] * _v[1] - u[1] * _v[0]
     return new Vector(w);
   }
+
+  length() {
+    // must specify initial value acc == 0
+    return Math.sqrt(this.arr.reduce((acc, val) => acc + val*val, 0));
+  }
+
+  norm() {
+    const length = this.length();
+    this.arr.forEach((v, i) => this.arr[i] = v / length)
+    return this;
+  }
 }
