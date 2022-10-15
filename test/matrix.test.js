@@ -119,3 +119,9 @@ test('Vector length and normalization', () => {
   expect(u.norm().length()).toEqual(1);
 });
 
+
+test('Vector scalar multiplication', () => {
+  let v = new Vector([-2, 1, 4]);
+  expect(v.multiply(5).arr).toEqual([-10, 5, 20]);
+});
+

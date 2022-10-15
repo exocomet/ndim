@@ -237,6 +237,12 @@ export class Vector {
     return new Vector(w);
   }
 
+  multiply(s) {
+    // scalar multiplication
+    this.arr.forEach((v, i) => this.arr[i] = v * s);
+    return this;
+  }
+
   length() {
     // must specify initial value acc == 0
     return Math.sqrt(this.arr.reduce((acc, val) => acc + val*val, 0));
