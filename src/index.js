@@ -15,6 +15,11 @@ export class Matrix {
     return [m, n];
   }
 
+  isSquare() {
+    const [m, n] = [...this.dim()]
+    return m == n;
+  }
+
   apply(func) {
     const [m, n] = this.dim();
     if(func instanceof Function) {
@@ -243,14 +248,15 @@ export class Vector {
     return this;
   }
 
-  length() {
-    // must specify initial value acc == 0
+  norm() {
+    // "length", must specify initial value acc == 0
     return Math.sqrt(this.arr.reduce((acc, val) => acc + val*val, 0));
   }
 
-  norm() {
-    const length = this.length();
-    this.arr.forEach((v, i) => this.arr[i] = v / length)
+  unit() {
+    // normalize
+    const norm = this.norm();
+    this.arr.forEach((v, i) => this.arr[i] = v / norm)
     return this;
   }
 }

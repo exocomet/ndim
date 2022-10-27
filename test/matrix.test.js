@@ -14,6 +14,12 @@ test('Basic matrix manipulatoin', () => {
   expect(m.get(1, 1)).toEqual(2);
 });
 
+test('Check matrix properties', () => {
+  let m = new Matrix([[1, -3, 2], [1, 2, 7]]); // m = 2, n = 3
+  expect(m.dim()).toEqual([2, 3]);
+  expect(m.isSquare()).toBe(false);
+})
+
 test('Matrix creation', () => {
   let m = new Matrix([[1, -3, 2], [1, 2, 7]]); // m = 2, n = 3
   expect(m.getRow(1).arr).toEqual([1, 2, 7]);
@@ -111,12 +117,12 @@ test('Vector length and normalization', () => {
   let u2 = new Vector([1, 1]);
   let u3 = new Vector([1, 1, 1]);
   let v = new Vector([3, 4]);
-  expect(u2.length()).toEqual(Math.sqrt(2));
-  expect(u3.length()).toEqual(Math.sqrt(3));
-  expect(v.length()).toEqual(5);
+  expect(u2.norm()).toEqual(Math.sqrt(2));
+  expect(u3.norm()).toEqual(Math.sqrt(3));
+  expect(v.norm()).toEqual(5);
 
   let u = new Vector([1, 1, 1]);
-  expect(u.norm().length()).toEqual(1);
+  expect(u.unit().norm()).toEqual(1);
 });
 
 
