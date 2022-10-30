@@ -80,12 +80,15 @@ test('Matrix scalar multiplication', () => {
 test('Vector creation', () => {
   let v = new Vector([1, -3, 2]);
   expect(v.dim()).toEqual(3);
+  let w = new Vector(3);
+  expect(w.dim()).toEqual(3);
 });
 
 test('Vector addition', () => {
   let u = new Vector([1, -3, 2]);
   let v = new Vector([4, -5, 6]);
   expect(u.add(v).arr).toEqual([5, -8, 8]);
+  console.log(u)
 });
 
 test('Vector subtract', () => {
@@ -131,3 +134,21 @@ test('Vector scalar multiplication', () => {
   expect(v.multiply(5).arr).toEqual([-10, 5, 20]);
 });
 
+test('Matrix copy', () => {
+  let m = new Matrix([[2, 5, 7], [8, 9, 10], [1, 2, 3]]);
+  let c = m.copy();
+  m.set(1, 1, 100);
+  expect(c.get(1, 1)).toEqual(9);
+
+  // this copy/cloning method does not work, still referenced!!
+  let f = new Matrix(m.arr);
+  f.set(1, 1, 200);
+  expect(m.get(1, 1)).toEqual(200);
+});
+
+test('Vector copy', () => {
+  let v = new Vector([2, 5, 7]);
+  let c = v.copy();
+  v.set(1, 100);
+  expect(c.get(1)).toEqual(5);
+});

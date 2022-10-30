@@ -15,6 +15,11 @@ export class Matrix {
     return [m, n];
   }
 
+  copy() {
+    const copy = this.arr.map((row) => row.slice());
+    return new Matrix(copy)
+  }
+
   isSquare() {
     const [m, n] = [...this.dim()]
     return m == n;
@@ -172,8 +177,17 @@ export class Matrix {
 }
 
 export class Vector {
-  constructor(v) {
-    this.arr = v; // [v0, v1, .., vn]
+  constructor(n, fill=0) {
+    // [v0, v1, .., vn]
+    if (n instanceof Array) {
+      this.arr = n
+    } else {
+      this.arr = Array(n).fill(fill);
+    }
+  }
+
+  copy() {
+    return new Vector(this.arr.slice());
   }
 
   dim() {
@@ -186,6 +200,10 @@ export class Vector {
 
   get(i) {
     return this.arr[i];
+  }
+
+  set(i, val) {
+    this.arr[i] = val;
   }
 
   add(v) {
