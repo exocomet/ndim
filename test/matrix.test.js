@@ -126,12 +126,19 @@ test('Vector length and normalization', () => {
 
   let u = new Vector([1, 1, 1]);
   expect(u.unit().norm()).toEqual(1);
+
+  // unit vector for zero-vector not defined -> throw error!
+  let z = new Vector(3, 0);
+  expect(()=> z.unit()).toThrow();
 });
 
 
 test('Vector scalar multiplication', () => {
   let v = new Vector([-2, 1, 4]);
   expect(v.multiply(5).arr).toEqual([-10, 5, 20]);
+
+  let z = new Vector(3, 0);
+  expect(z.multiply(5).arr).toEqual([0, 0, 0]);
 });
 
 test('Matrix copy', () => {

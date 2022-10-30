@@ -274,6 +274,9 @@ export class Vector {
   unit() {
     // normalize
     const norm = this.norm();
+    if (norm < Number.EPSILON) {
+      throw new Error('Can not normalize zero-vector.');
+    }
     this.arr.forEach((v, i) => this.arr[i] = v / norm)
     return this;
   }
