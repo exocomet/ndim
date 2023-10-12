@@ -24,3 +24,9 @@ Test is done with jest.
 # npm install -D @babel/preset-env ## fix SyntaxError: Cannot use import statement outside a module
 npm run test
 ```
+
+You can automate this during development with `nodeon`.
+
+```
+nodemon --exec "npm run test"
+```

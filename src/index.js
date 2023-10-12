@@ -17,11 +17,11 @@ export class Matrix {
 
   copy() {
     const copy = this.arr.map((row) => row.slice());
-    return new Matrix(copy)
+    return new Matrix(copy);
   }
 
   isSquare() {
-    const [m, n] = [...this.dim()]
+    const [m, n] = [...this.dim()];
     return m == n;
   }
 
@@ -84,7 +84,7 @@ export class Matrix {
     let _ma = this.arr.length;
     let _na = this.arr[0].length;
     let _b = this.assureArray(b);
-    let _mb = _b.length;
+    // let _mb = _b.length;
     let _nb = _b[0].length;
     // TODO: assert correct dimensions
     let a = Array(_ma).fill(0).map(() => Array(_nb).fill(0));
@@ -144,21 +144,21 @@ export class Matrix {
     let a = this.arr;
     for (let i = 0; i < m; i++) {
       for (let j = 0; j < Math.floor(n/2); j++) {
-        let tmp = a[i][j]
-        a[i][j] = a[i][n-j-1]
-        a[i][n-j-1] = tmp
+        let tmp = a[i][j];
+        a[i][j] = a[i][n-j-1];
+        a[i][n-j-1] = tmp;
       }
     }
     return this;
   }
 
   mirrorRows() {
-    const [m, _] = this.dim();
+    const [m, ] = this.dim();
     let a = this.arr;
     for (let i = 0; i < Math.floor(m/2); i++) {
-      let tmp = a[i]
-      a[i] = a[m-i-1]
-      a[m-i-1] = tmp
+      let tmp = a[i];
+      a[i] = a[m-i-1];
+      a[m-i-1] = tmp;
     }
     return this;
   }
@@ -180,7 +180,7 @@ export class Vector {
   constructor(n, fill=0) {
     // [v0, v1, .., vn]
     if (n instanceof Array) {
-      this.arr = n
+      this.arr = n;
     } else {
       this.arr = Array(n).fill(fill);
     }
@@ -196,7 +196,7 @@ export class Vector {
 
   _assertDimensions(v) {
     if(!this.dim() == v.dim()) throw Error;
-  };
+  }
 
   get(i) {
     return this.arr[i];
@@ -256,7 +256,7 @@ export class Vector {
     let w = new Array(3);
     w[0] = u[1] * _v[2] - u[2] * _v[1],
     w[1] = u[2] * _v[0] - u[0] * _v[2],
-    w[2] = u[0] * _v[1] - u[1] * _v[0]
+    w[2] = u[0] * _v[1] - u[1] * _v[0];
     return new Vector(w);
   }
 
@@ -277,7 +277,7 @@ export class Vector {
     if (norm < Number.EPSILON) {
       throw new Error('Can not normalize zero-vector.');
     }
-    this.arr.forEach((v, i) => this.arr[i] = v / norm)
+    this.arr.forEach((v, i) => this.arr[i] = v / norm);
     return this;
   }
 }
