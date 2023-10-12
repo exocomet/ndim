@@ -4,28 +4,27 @@
   "description": "Multidimensional matrix manipulation.",
   "main": "index.js",
   "scripts": {
-  "test": "jest"
+    "test": "jest"
   },
   "repository": {
-  "type": "git",
-  "url": "git+https://github.com/exocomet/ndim.git"
+    "type": "git",
+    "url": "git+https://github.com/exocomet/ndim.git"
   },
   "keywords": [
-  "matrix",
-  "vector"
+    "matrix",
+    "vector"
   ],
   "author": "Alexander Kutterer",
   "license": "MIT",
   "bugs": {
-  "url": "https://github.com/exocomet/ndim/issues"
+    "url": "https://github.com/exocomet/ndim/issues"
   },
   "homepage": "https://github.com/exocomet/ndim#readme",
   "exports": {
-  "import": "./src/index.js"
+    "import": "./src/index.js"
   },
   "devDependencies": {
-  "@babel/preset-env": "^7.19.4",
-  "eslint": "^8.51.0",
-  "jest": "^29.2.0"
+    "@babel/preset-env": "^7.19.4",
+    "jest": "^29.2.0"
   }
 }
