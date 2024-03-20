@@ -1,8 +1,18 @@
-import {Matrix, Vector} from '../src/index.js';
+import {Matrix, Vector} from '../built/index.js';
 
 test('Matrix creation', () => {
   let m = new Matrix(3, 2);
   expect(m.get(1, 1)).toEqual(0);
+
+  m = new Matrix([[1, -3, 2], [1, 2, 7]]);
+  expect(m.get(1, 1)).toEqual(2);
+
+  // new Matrix(3) does not make much sense. is it square, is it a vector, ..?
+  expect(() => {new Matrix(3)}).toThrow(Error);
+
+  // it is a matrix, not a vector
+  expect(() => {new Matrix([3])}).toThrow(Error);
+
 });
 
 test('Basic matrix manipulatoin', () => {
@@ -14,10 +24,17 @@ test('Basic matrix manipulatoin', () => {
   expect(m.get(1, 1)).toEqual(2);
 });
 
-test('Check matrix properties', () => {
+test('Check matrix dimensions', () => {
   let m = new Matrix([[1, -3, 2], [1, 2, 7]]); // m = 2, n = 3
   expect(m.dim()).toEqual([2, 3]);
+});
+
+
+test('Check matrix properties', () => {
+  let m = new Matrix([[1, -3, 2], [1, 2, 7]]); // m = 2, n = 3
   expect(m.isSquare()).toBe(false);
+  m = new Matrix([[1, -2], [1, 2]]); // m = 2, n = 2
+  expect(m.isSquare()).toBe(true);
 });
 
 test('Matrix creation', () => {

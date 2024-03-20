@@ -25,7 +25,7 @@ Test is done with jest.
 npm run test
 ```
 
-You can automate this during development with `nodeon`.
+You can automate this during development with `nodemon`.
 
 ```
 nodemon --exec "npm run test"
