@@ -174,3 +174,10 @@ test('Vector copy', () => {
   v.set(1, 100);
   expect(c.get(1)).toEqual(5);
 });
+
+test('Chaining', () => {
+  let v = new Vector([2, 5, 7]);
+  let w = new Vector([1, -3, -2]);
+  let r = v.add(w).subtract(w);
+  expect(r).toEqual(v);
+});
