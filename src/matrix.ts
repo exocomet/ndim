@@ -19,7 +19,6 @@ import { Vector } from "./vector";
 //   mirrorRows(): Matrix;
 // }
 
-
 export class Matrix {
   private arr: number[][];
 
@@ -32,18 +31,19 @@ export class Matrix {
     // n - number of columns
 
     if (n) {
-      this.arr = Array(m).fill(_fill).map(()=>Array(n).fill(_fill));
+      this.arr = Array(m)
+        .fill(_fill)
+        .map(() => Array(n).fill(_fill));
     } else {
       if (m instanceof Matrix) {
         // copy the matrix
         this.arr = m.arr.map((row) => row.slice());
-      } else if ((Array.isArray(m) && Array.isArray(m[0]))) {
+      } else if (Array.isArray(m) && Array.isArray(m[0])) {
         this.arr = m;
       } else {
-        throw new Error('NotImplemented');
+        throw new Error("NotImplemented");
       }
     }
-
   }
 
   dim() {
@@ -65,7 +65,7 @@ export class Matrix {
 
   apply(func: any) {
     const [m, n] = this.dim();
-    if(func instanceof Function) {
+    if (func instanceof Function) {
       for (let i = 0; i < m; i++) {
         for (let j = 0; j < n; j++) {
           this.arr[i][j] = func(i, j, this.arr[i][j]);
@@ -89,7 +89,9 @@ export class Matrix {
 
   transpose() {
     const [m, n] = this.dim();
-    let a = Array(n).fill(0).map(() => Array(m).fill(0));
+    let a = Array(n)
+      .fill(0)
+      .map(() => Array(m).fill(0));
     for (let i = 0; i < m; i++) {
       for (let j = 0; j < n; j++) {
         a[j][i] = this.arr[i][j];
@@ -115,7 +117,7 @@ export class Matrix {
 
   getColumn(j: number) {
     // returns a Vector
-    return new Vector(this.arr.map(row=>row[j]));
+    return new Vector(this.arr.map((row) => row[j]));
   }
 
   multiply(b: Matrix) {
@@ -125,11 +127,13 @@ export class Matrix {
     // let _mb = _b.length;
     let _nb = _b[0].length;
     // TODO: assert correct dimensions
-    let a = Array(_ma).fill(0).map(() => Array(_nb).fill(0));
-    for(let i=0; i < _ma; i++) {
-      for(let j=0; j < _nb; j++) {
-        for (let k=0; k < _na; k++) {
-          a[i][j] = a[i][j] + this.arr[i][k]*_b[k][j];
+    let a = Array(_ma)
+      .fill(0)
+      .map(() => Array(_nb).fill(0));
+    for (let i = 0; i < _ma; i++) {
+      for (let j = 0; j < _nb; j++) {
+        for (let k = 0; k < _na; k++) {
+          a[i][j] = a[i][j] + this.arr[i][k] * _b[k][j];
         }
       }
     }
@@ -181,22 +185,22 @@ export class Matrix {
     const [m, n] = this.dim();
     let a = this.arr;
     for (let i = 0; i < m; i++) {
-      for (let j = 0; j < Math.floor(n/2); j++) {
+      for (let j = 0; j < Math.floor(n / 2); j++) {
         let tmp = a[i][j];
-        a[i][j] = a[i][n-j-1];
-        a[i][n-j-1] = tmp;
+        a[i][j] = a[i][n - j - 1];
+        a[i][n - j - 1] = tmp;
       }
     }
     return this;
   }
 
   mirrorRows() {
-    const [m, ] = this.dim();
+    const [m] = this.dim();
     let a = this.arr;
-    for (let i = 0; i < Math.floor(m/2); i++) {
+    for (let i = 0; i < Math.floor(m / 2); i++) {
       let tmp = a[i];
-      a[i] = a[m-i-1];
-      a[m-i-1] = tmp;
+      a[i] = a[m - i - 1];
+      a[m - i - 1] = tmp;
     }
     return this;
   }

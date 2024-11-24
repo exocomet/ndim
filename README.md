@@ -1,6 +1,6 @@
 # ndim
-Multidimensional matrix manipulation. Should it be called m3?
 
+Multidimensional matrix manipulation. Should it be called m3?
 
 ## Install
 

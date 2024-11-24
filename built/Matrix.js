@@ -22,49 +22,29 @@ const vector_1 = require("./vector");
 // }
 class Matrix {
     // TODO: overloading?
+    // constructor();
     // constructor(m: Matrix);
     constructor(m, n) {
         const _fill = 0;
         // m - number of rows
         // n - number of columns
         if (n) {
-            this.arr = Array(m).fill(_fill).map(() => Array(n).fill(_fill));
+            this.arr = Array(m)
+                .fill(_fill)
+                .map(() => Array(n).fill(_fill));
         }
         else {
             if (m instanceof Matrix) {
-                //this.arr = ob.arr;
-                // copy
+                // copy the matrix
                 this.arr = m.arr.map((row) => row.slice());
             }
-            else if ((Array.isArray(m) && Array.isArray(m[0]))) {
+            else if (Array.isArray(m) && Array.isArray(m[0])) {
                 this.arr = m;
             }
             else {
-                throw new Error('NotImplemented');
+                throw new Error("NotImplemented");
             }
         }
-        // if (Array.isArray(m)) {
-        //   this.arr = Array(m).fill(fill).map(()=>Array(n).fill(fill));
-        // } else if (typeof m == "number") {
-        //   this.arr = Array(m).fill(fill).map(()=>Array(n).fill(fill));
-        // // if (typeof m === 'IMatrix') {
-        // // if (m instanceof Matrix) {
-        // //   this.arr = m.arr;
-        // // } else if (m instanceof Array) {
-        // //   this.arr = m;
-        // // } else if (typeof m == "number" && typeof n == "number") {
-        // //   this.arr = Array(m).fill(fill).map(()=>Array(n).fill(fill));
-        // // } else if (typeof m == "number" && typeof n == "undefined") {
-        // //   this.arr = Array(m).fill(fill);
-        // // } else if (typeof m == "undefined" && typeof n == "undefined") {
-        // //   this.arr = [];
-        // // } else if (typeof m == "undefined" && typeof n == "number") {
-        // //   this.arr = Array(n).fill(fill);
-        // } else if (typeof m == "undefined" && typeof n == "undefined") {
-        //   this.arr = [];
-        // } else {
-        //   throw Error;
-        // }
     }
     dim() {
         const m = this.arr.length;
@@ -104,7 +84,9 @@ class Matrix {
     }
     transpose() {
         const [m, n] = this.dim();
-        let a = Array(n).fill(0).map(() => Array(m).fill(0));
+        let a = Array(n)
+            .fill(0)
+            .map(() => Array(m).fill(0));
         for (let i = 0; i < m; i++) {
             for (let j = 0; j < n; j++) {
                 a[j][i] = this.arr[i][j];
@@ -126,7 +108,7 @@ class Matrix {
     }
     getColumn(j) {
         // returns a Vector
-        return new vector_1.Vector(this.arr.map(row => row[j]));
+        return new vector_1.Vector(this.arr.map((row) => row[j]));
     }
     multiply(b) {
         let _ma = this.arr.length;
@@ -135,7 +117,9 @@ class Matrix {
         // let _mb = _b.length;
         let _nb = _b[0].length;
         // TODO: assert correct dimensions
-        let a = Array(_ma).fill(0).map(() => Array(_nb).fill(0));
+        let a = Array(_ma)
+            .fill(0)
+            .map(() => Array(_nb).fill(0));
         for (let i = 0; i < _ma; i++) {
             for (let j = 0; j < _nb; j++) {
                 for (let k = 0; k < _na; k++) {
@@ -196,7 +180,7 @@ class Matrix {
         return this;
     }
     mirrorRows() {
-        const [m,] = this.dim();
+        const [m] = this.dim();
         let a = this.arr;
         for (let i = 0; i < Math.floor(m / 2); i++) {
             let tmp = a[i];

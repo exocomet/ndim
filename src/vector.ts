@@ -1,9 +1,7 @@
-
 export class Vector {
-
   private arr: number[];
 
-  constructor(n: number | number[], fill=0) {
+  constructor(n: number | number[], fill = 0) {
     // [v0, v1, .., vn]
     if (n instanceof Array) {
       this.arr = n;
@@ -21,8 +19,7 @@ export class Vector {
   }
 
   _assertDimensions(v: Vector) {
-    // if(!this.dim() == v.dim()) throw Error;
-    if(!(this.dim() == v.dim())) throw Error;
+    if (!(this.dim() == v.dim())) throw Error;
   }
 
   get(i: number) {
@@ -40,7 +37,7 @@ export class Vector {
 
     // see MAtrix: let _b = this.assureArray(b);
     let _v = v.arr; // assert vector -> array
-    u.forEach((_, i) => u[i] += _v[i]);
+    u.forEach((_, i) => (u[i] += _v[i]));
     return this;
   }
 
@@ -50,7 +47,7 @@ export class Vector {
 
     // see MAtrix: let _b = this.assureArray(b);
     let _v = v.arr; // assert vector -> array
-    u.forEach((_, i) => u[i] -= _v[i]);
+    u.forEach((_, i) => (u[i] -= _v[i]));
     return this;
   }
 
@@ -59,7 +56,7 @@ export class Vector {
     this._assertDimensions(v);
     let u = this.arr;
     let _v = v.arr; // assert vector -> array
-    u.map((_, i) => u[i] = u[i] * _v[i]);
+    u.map((_, i) => (u[i] = u[i] * _v[i]));
     return this;
   }
 
@@ -69,7 +66,7 @@ export class Vector {
     let u = this.arr;
     let _v = v.arr; // assert vector -> array
     const result = u.reduce((acc, cur, i) => {
-      acc += (cur * _v[i]);
+      acc += cur * _v[i];
       return acc;
     }, 0);
     return result;
@@ -82,30 +79,30 @@ export class Vector {
     let u = this.arr;
     let _v = v.arr; // assert vector -> array
     let w = new Array(3);
-    w[0] = u[1] * _v[2] - u[2] * _v[1],
-    w[1] = u[2] * _v[0] - u[0] * _v[2],
-    w[2] = u[0] * _v[1] - u[1] * _v[0];
+    (w[0] = u[1] * _v[2] - u[2] * _v[1]),
+      (w[1] = u[2] * _v[0] - u[0] * _v[2]),
+      (w[2] = u[0] * _v[1] - u[1] * _v[0]);
     return new Vector(w);
   }
 
   multiply(s: number) {
     // scalar multiplication
-    this.arr.forEach((v, i) => this.arr[i] = v * s);
+    this.arr.forEach((v, i) => (this.arr[i] = v * s));
     return this;
   }
 
   norm() {
     // "length", must specify initial value acc == 0
-    return Math.sqrt(this.arr.reduce((acc, val) => acc + val*val, 0));
+    return Math.sqrt(this.arr.reduce((acc, val) => acc + val * val, 0));
   }
 
   unit() {
     // normalize
     const norm = this.norm();
     if (norm < Number.EPSILON) {
-      throw new Error('Can not normalize zero-vector.');
+      throw new Error("Can not normalize zero-vector.");
     }
-    this.arr.forEach((v, i) => this.arr[i] = v / norm);
+    this.arr.forEach((v, i) => (this.arr[i] = v / norm));
     return this;
   }
 }
