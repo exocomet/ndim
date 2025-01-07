@@ -2,9 +2,9 @@
   "name": "ndim",
   "version": "0.0.2",
   "description": "Multidimensional matrix manipulation.",
-  "main": "dist/index.js",        // Entry for CommonJS
-  "module": "dist/index.mjs",     // Entry for ESM
-  "types": "types/index.d.ts",    // Type definitions
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "types/index.d.ts",
   "scripts": {
     "test": "jest",
     "build": "tsc -b"
@@ -25,8 +25,8 @@
   "homepage": "https://github.com/exocomet/ndim#readme",
   "exports": {
     ".": {
-      "require": "./dist/index.js", // CommonJS
-      "import": "./dist/index.mjs" // ESM
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
     }
   },
   "files": [
