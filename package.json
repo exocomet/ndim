@@ -2,8 +2,9 @@
   "name": "ndim",
   "version": "0.0.2",
   "description": "Multidimensional matrix manipulation.",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "built/index.js",
+  "types": "types/index.d.ts",
+  "files": ["built", "types"],
   "scripts": {
     "test": "jest",
     "build": "tsc -b"
