@@ -1,4 +1,4 @@
-import {Matrix, Vector} from '../built/index.js';
+import {Matrix, Vector} from '../dist/index.js';
 
 test('Matrix creation', () => {
   let m = new Matrix(3, 2);
