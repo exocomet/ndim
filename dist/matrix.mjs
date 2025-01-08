@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Matrix = void 0;
-const vector_1 = require("./vector");
+import { Vector } from "./vector.mjs";
 // interface IMatrix {
 //   dim(): number[];
 //   copy(): Matrix;
@@ -20,7 +17,7 @@ const vector_1 = require("./vector");
 //   mirrorColumns(): Matrix;
 //   mirrorRows(): Matrix;
 // }
-class Matrix {
+export class Matrix {
     // TODO: overloading?
     // constructor();
     // constructor(m: Matrix);
@@ -104,11 +101,11 @@ class Matrix {
     }
     getRow(i) {
         // returns a Vector
-        return new vector_1.Vector(this.arr[i]);
+        return new Vector(this.arr[i]);
     }
     getColumn(j) {
         // returns a Vector
-        return new vector_1.Vector(this.arr.map((row) => row[j]));
+        return new Vector(this.arr.map((row) => row[j]));
     }
     multiply(b) {
         let _ma = this.arr.length;
@@ -200,4 +197,3 @@ class Matrix {
         }
     }
 }
-exports.Matrix = Matrix;

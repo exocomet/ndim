@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Vector = void 0;
-class Vector {
+export class Vector {
     constructor(n, fill = 0) {
         // [v0, v1, .., vn]
         if (n instanceof Array) {
@@ -94,4 +91,3 @@ class Vector {
         return this;
     }
 }
-exports.Vector = Vector;

@@ -1,4 +1,4 @@
-import { Vector } from "./vector";
+import { Vector } from "./vector.mjs";
 
 // interface IMatrix {
 //   dim(): number[];

@@ -1,4 +1,4 @@
-import { Vector } from "./vector";
+import { Vector } from "./vector.mjs";
 export declare class Matrix {
     private arr;
     constructor(m: Matrix | number[][] | number, n?: number);

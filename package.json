@@ -29,6 +29,7 @@
       "import": "./dist/index.mjs"
     }
   },
+  "type": "module",
   "files": [
     "dist",
     "types"
