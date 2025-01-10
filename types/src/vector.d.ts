@@ -14,4 +14,5 @@ export declare class Vector {
     multiply(s: number): this;
     norm(): number;
     unit(): this;
+    toArr(): number[];
 }

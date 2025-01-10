@@ -1,4 +1,7 @@
-export class Vector {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Vector = void 0;
+class Vector {
     constructor(n, fill = 0) {
         // [v0, v1, .., vn]
         if (n instanceof Array) {
@@ -90,4 +93,8 @@ export class Vector {
         this.arr.forEach((v, i) => (this.arr[i] = v / norm));
         return this;
     }
+    toArr() {
+        return this.arr;
+    }
 }
+exports.Vector = Vector;

@@ -1,5 +1,9 @@
-import { Vector } from "./vector.mjs";
-export declare class Matrix {
+import { Vector } from "./vector.js";
+interface Indexable {
+    [key: string | number]: any;
+}
+export declare class Matrix implements Indexable {
+    [k: string]: any;
     private arr;
     constructor(m: Matrix | number[][] | number, n?: number);
     dim(): number[];
@@ -18,5 +22,6 @@ export declare class Matrix {
     scalar(s: number): this;
     mirrorColumns(): this;
     mirrorRows(): this;
-    assureArray(a: any): any;
+    toArr(): number[][];
 }
+export {};

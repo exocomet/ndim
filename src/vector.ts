@@ -105,4 +105,8 @@ export class Vector {
     this.arr.forEach((v, i) => (this.arr[i] = v / norm));
     return this;
   }
+
+  toArr() {
+    return this.arr;
+  }
 }

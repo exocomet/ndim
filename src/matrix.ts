@@ -1,4 +1,4 @@
-import { Vector } from "./vector.mjs";
+import { Vector } from "./vector";
 
 // interface IMatrix {
 //   dim(): number[];
@@ -19,7 +19,13 @@ import { Vector } from "./vector.mjs";
 //   mirrorRows(): Matrix;
 // }
 
-export class Matrix {
+interface Indexable {
+  [key: string | number ]: any
+}
+
+export class Matrix implements Indexable {
+  [k: string]: any;
+
   private arr: number[][];
 
   // TODO: overloading?
@@ -123,9 +129,11 @@ export class Matrix {
   multiply(b: Matrix) {
     let _ma = this.arr.length;
     let _na = this.arr[0].length;
-    let _b = this.assureArray(b);
+    // let _b = this.assureArray(b);
     // let _mb = _b.length;
-    let _nb = _b[0].length;
+    // let _nb = b[0].length;
+    let _nb = b.toArr()[0].length;
+
     // TODO: assert correct dimensions
     let a = Array(_ma)
       .fill(0)
@@ -133,7 +141,7 @@ export class Matrix {
     for (let i = 0; i < _ma; i++) {
       for (let j = 0; j < _nb; j++) {
         for (let k = 0; k < _na; k++) {
-          a[i][j] = a[i][j] + this.arr[i][k] * _b[k][j];
+          a[i][j] = a[i][j] + this.arr[i][k] * b[k][j];
         }
       }
     }
@@ -143,11 +151,11 @@ export class Matrix {
 
   add(b: Matrix) {
     let a = this.arr;
-    let _b = this.assureArray(b);
+    // let _b = this.assureArray(b);
     const [m, n] = this.dim();
     for (let i = 0; i < m; i++) {
       for (let j = 0; j < n; j++) {
-        a[i][j] = a[i][j] + _b[i][j];
+        a[i][j] = a[i][j] + b[i][j];
       }
     }
     return this;
@@ -157,12 +165,12 @@ export class Matrix {
   hadamard(b: Matrix) {
     const [m, n] = this.dim();
     let a = this.arr;
-    let _b = this.assureArray(b);
+    // let _b = this.assureArray(b);
     // check for same size
     // if (!(a.length==b.length) || !(a[0].length==b[0].length)) throw new Error('Different size');
     for (let i = 0; i < m; i++) {
       for (let j = 0; j < n; j++) {
-        a[i][j] = a[i][j] * _b[i][j];
+        a[i][j] = a[i][j] * b[i][j];
       }
     }
     return this;
@@ -205,13 +213,17 @@ export class Matrix {
     return this;
   }
 
-  // TODO: with typescript not needed?
-  // a<Array>
-  assureArray(a: any) {
-    if (a instanceof Matrix) {
-      return a.arr;
-    } else {
-      return a;
-    }
+  // // TODO: with typescript not needed?
+  // // a<Array>
+  // assureArray(a: any) {
+  //   if (a instanceof Matrix) {
+  //     return a.arr;
+  //   } else {
+  //     return a;
+  //   }
+  // }
+
+  toArr() {
+    return this.arr;
   }
 }
