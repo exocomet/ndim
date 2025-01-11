@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Matrix = void 0;
-const vector_js_1 = require("./vector.js");
+const vector_1 = require("./vector");
 class Matrix {
     // TODO: overloading?
     // constructor();
@@ -86,11 +86,11 @@ class Matrix {
     }
     getRow(i) {
         // returns a Vector
-        return new vector_js_1.Vector(this.arr[i]);
+        return new vector_1.Vector(this.arr[i]);
     }
     getColumn(j) {
         // returns a Vector
-        return new vector_js_1.Vector(this.arr.map((row) => row[j]));
+        return new vector_1.Vector(this.arr.map((row) => row[j]));
     }
     multiply(b) {
         let _ma = this.arr.length;
@@ -106,6 +106,8 @@ class Matrix {
         for (let i = 0; i < _ma; i++) {
             for (let j = 0; j < _nb; j++) {
                 for (let k = 0; k < _na; k++) {
+                    let yy = typeof (b[k]);
+                    console.log(yy);
                     a[i][j] = a[i][j] + this.arr[i][k] * b[k][j];
                 }
             }

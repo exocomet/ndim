@@ -20,7 +20,7 @@ import { Vector } from "./vector";
 // }
 
 interface Indexable {
-  [key: string | number ]: any
+  [key: number ]: Vector
 }
 
 export class Matrix implements Indexable {
@@ -129,10 +129,10 @@ export class Matrix implements Indexable {
   multiply(b: Matrix) {
     let _ma = this.arr.length;
     let _na = this.arr[0].length;
-    // let _b = this.assureArray(b);
+    let _b = b.toArr();
     // let _mb = _b.length;
     // let _nb = b[0].length;
-    let _nb = b.toArr()[0].length;
+    let _nb = _b[0].length;
 
     // TODO: assert correct dimensions
     let a = Array(_ma)
@@ -141,7 +141,7 @@ export class Matrix implements Indexable {
     for (let i = 0; i < _ma; i++) {
       for (let j = 0; j < _nb; j++) {
         for (let k = 0; k < _na; k++) {
-          a[i][j] = a[i][j] + this.arr[i][k] * b[k][j];
+          a[i][j] = a[i][j] + this.arr[i][k] * _b[k][j];
         }
       }
     }
@@ -151,11 +151,11 @@ export class Matrix implements Indexable {
 
   add(b: Matrix) {
     let a = this.arr;
-    // let _b = this.assureArray(b);
+    let _b = b.toArr();
     const [m, n] = this.dim();
     for (let i = 0; i < m; i++) {
       for (let j = 0; j < n; j++) {
-        a[i][j] = a[i][j] + b[i][j];
+        a[i][j] = a[i][j] + _b[i][j];
       }
     }
     return this;
@@ -165,12 +165,12 @@ export class Matrix implements Indexable {
   hadamard(b: Matrix) {
     const [m, n] = this.dim();
     let a = this.arr;
-    // let _b = this.assureArray(b);
+    let _b = b.toArr();
     // check for same size
     // if (!(a.length==b.length) || !(a[0].length==b[0].length)) throw new Error('Different size');
     for (let i = 0; i < m; i++) {
       for (let j = 0; j < n; j++) {
-        a[i][j] = a[i][j] * b[i][j];
+        a[i][j] = a[i][j] * _b[i][j];
       }
     }
     return this;

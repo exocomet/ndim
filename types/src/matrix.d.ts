@@ -1,6 +1,6 @@
-import { Vector } from "./vector.js";
+import { Vector } from "./vector";
 interface Indexable {
-    [key: string | number]: any;
+    [key: number]: Vector;
 }
 export declare class Matrix implements Indexable {
     [k: string]: any;
