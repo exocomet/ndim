@@ -95,10 +95,10 @@ class Matrix {
     multiply(b) {
         let _ma = this.arr.length;
         let _na = this.arr[0].length;
-        // let _b = this.assureArray(b);
+        let _b = b.toArr();
         // let _mb = _b.length;
         // let _nb = b[0].length;
-        let _nb = b.toArr()[0].length;
+        let _nb = _b[0].length;
         // TODO: assert correct dimensions
         let a = Array(_ma)
             .fill(0)
@@ -106,9 +106,7 @@ class Matrix {
         for (let i = 0; i < _ma; i++) {
             for (let j = 0; j < _nb; j++) {
                 for (let k = 0; k < _na; k++) {
-                    let yy = typeof (b[k]);
-                    console.log(yy);
-                    a[i][j] = a[i][j] + this.arr[i][k] * b[k][j];
+                    a[i][j] = a[i][j] + this.arr[i][k] * _b[k][j];
                 }
             }
         }
@@ -117,11 +115,11 @@ class Matrix {
     }
     add(b) {
         let a = this.arr;
-        // let _b = this.assureArray(b);
+        let _b = b.toArr();
         const [m, n] = this.dim();
         for (let i = 0; i < m; i++) {
             for (let j = 0; j < n; j++) {
-                a[i][j] = a[i][j] + b[i][j];
+                a[i][j] = a[i][j] + _b[i][j];
             }
         }
         return this;
@@ -130,12 +128,12 @@ class Matrix {
     hadamard(b) {
         const [m, n] = this.dim();
         let a = this.arr;
-        // let _b = this.assureArray(b);
+        let _b = b.toArr();
         // check for same size
         // if (!(a.length==b.length) || !(a[0].length==b[0].length)) throw new Error('Different size');
         for (let i = 0; i < m; i++) {
             for (let j = 0; j < n; j++) {
-                a[i][j] = a[i][j] * b[i][j];
+                a[i][j] = a[i][j] * _b[i][j];
             }
         }
         return this;
