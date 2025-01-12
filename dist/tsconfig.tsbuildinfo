@@ -1,1 +1,1 @@
-{"root":["../src/index.ts","../src/matrix.ts","../src/vector.ts","../test/matrix.test.ts","../test/vector.test.ts"],"version":"5.7.2"}
+{"root":["../src/index.ts","../src/matrix.ts","../src/vector.ts"],"version":"5.7.2"}
