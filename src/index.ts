@@ -1,2 +1,6 @@
-export { Matrix } from "./matrix";
-export { Vector } from "./vector";
+import { Matrix as m } from "./matrix";
+import { Vector as v } from "./vector";
+// export { Vector } from "./vector";
+
+export const Matrix = m
+export const Vector = v

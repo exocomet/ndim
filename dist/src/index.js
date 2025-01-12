@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Vector = exports.Matrix = void 0;
-var matrix_1 = require("./matrix");
-Object.defineProperty(exports, "Matrix", { enumerable: true, get: function () { return matrix_1.Matrix; } });
-var vector_1 = require("./vector");
-Object.defineProperty(exports, "Vector", { enumerable: true, get: function () { return vector_1.Vector; } });
+const matrix_1 = require("./matrix");
+const vector_1 = require("./vector");
+// export { Vector } from "./vector";
+exports.Matrix = matrix_1.Matrix;
+exports.Vector = vector_1.Vector;
