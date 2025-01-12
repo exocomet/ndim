@@ -1,5 +1,5 @@
 
-import { Vector } from "../src";
+import { Vector } from "../src/index";
 
 it('creates a valid vector', () => {
   const zeros = new Vector(3);

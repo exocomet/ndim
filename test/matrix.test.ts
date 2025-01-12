@@ -1,4 +1,5 @@
-import { Matrix } from "../src";
+// import { Matrix } from "../src";
+import { Matrix } from '../src/index'
 
 
 test('Matrix creation', () => {

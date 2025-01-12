@@ -6,8 +6,8 @@
 
 
     "outDir": "dist",                // Output directory
-    "target": "ES6",              // Target ECMAScript version
-    "module": "CommonJS",              // Output module format
+    "target": "ESNext",              // Target ECMAScript version
+    "module": "ESNext",              // Output module format
     // "moduleResolution": "nodenext",  // Modern module resolution
     // "declaration": true,             // Generate `.d.ts` files
     // "declarationDir": "types",       // Location for `.d.ts` files

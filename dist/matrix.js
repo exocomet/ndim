@@ -1,8 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Matrix = void 0;
-const vector_1 = require("./vector");
-class Matrix {
+import { Vector } from "./vector";
+export class Matrix {
+    arr;
     // TODO: overloading?
     // constructor();
     // constructor(m: Matrix);
@@ -86,11 +84,11 @@ class Matrix {
     }
     getRow(i) {
         // returns a Vector
-        return new vector_1.Vector(this.arr[i]);
+        return new Vector(this.arr[i]);
     }
     getColumn(j) {
         // returns a Vector
-        return new vector_1.Vector(this.arr.map((row) => row[j]));
+        return new Vector(this.arr.map((row) => row[j]));
     }
     multiply(b) {
         let _ma = this.arr.length;
@@ -185,4 +183,3 @@ class Matrix {
         return this.arr;
     }
 }
-exports.Matrix = Matrix;
