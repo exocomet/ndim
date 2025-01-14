@@ -1,13 +1,13 @@
 {
-  "include": ["src/**/*"],           // Specify files/directories to include
-  "exclude": ["node_modules", "dist", "test"], // Exclude unnecessary files
+  "include": ["./src/**/*"],           // Specify files/directories to include
+  "exclude": ["./node_modules", "./dist", "./test"], // Exclude unnecessary files
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
 
-    "outDir": "dist",                // Output directory
-    "target": "ESNext",              // Target ECMAScript version
-    "module": "ESNext",              // Output module format
+    "outDir": "./dist",                // Output directory
+    "target": "ES6",              // Target ECMAScript version
+    "module": "ES6",              // Output module format
     // "moduleResolution": "nodenext",  // Modern module resolution
     // "declaration": true,             // Generate `.d.ts` files
     // "declarationDir": "types",       // Location for `.d.ts` files

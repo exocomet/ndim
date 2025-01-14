@@ -1,5 +1,4 @@
 export class Vector {
-    arr;
     constructor(n, fill = 0) {
         // [v0, v1, .., vn]
         if (n instanceof Array) {

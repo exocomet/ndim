@@ -29,7 +29,6 @@
       "import": "./dist/index.js"
     }
   },
-  "type": "module",
   "files": [
     "dist",
     "types"

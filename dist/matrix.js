@@ -1,6 +1,5 @@
 import { Vector } from "./vector";
 export class Matrix {
-    arr;
     // TODO: overloading?
     // constructor();
     // constructor(m: Matrix);
